@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9681e0d0-aafb-4366-bccb-6a1600dc1c28" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Game/Client/view/UserInterface.java" afterPath="$PROJECT_DIR$/src/Game/Client/view/UserInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Game/Server/controller/Controller.java" afterPath="$PROJECT_DIR$/src/Game/Server/controller/Controller.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Game/Server/model/Game.java" afterPath="$PROJECT_DIR$/src/Game/Server/model/Game.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -28,11 +27,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game/Server/model/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="744">
-              <caret line="147" column="32" lean-forward="false" selection-start-line="147" selection-start-column="32" selection-end-line="147" selection-end-column="32" />
+            <state relative-caret-position="1680">
+              <caret line="82" column="26" lean-forward="false" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -75,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserInterface.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserInterface.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Game/Client/view/UserInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="652">
-              <caret line="36" column="5" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="36" selection-end-column="5" />
+            <state relative-caret-position="547">
+              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -485,12 +484,12 @@
       <option name="presentableId" value="Default" />
       <updated>1510751274017</updated>
       <workItem from="1510751280171" duration="15311000" />
-      <workItem from="1510825315661" duration="19984000" />
+      <workItem from="1510825315661" duration="22605000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35295000" />
+    <option name="totallyTimeSpent" value="37916000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -709,21 +708,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/Client/view/UserInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/Game/Server/model/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="652">
-          <caret line="36" column="5" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="36" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="1680">
+          <caret line="82" column="26" lean-forward="false" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/Server/model/Game.java">
+    <entry file="file://$PROJECT_DIR$/src/Game/Client/view/UserInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="744">
-          <caret line="147" column="32" lean-forward="false" selection-start-line="147" selection-start-column="32" selection-end-line="147" selection-end-column="32" />
-          <folding />
+        <state relative-caret-position="547">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

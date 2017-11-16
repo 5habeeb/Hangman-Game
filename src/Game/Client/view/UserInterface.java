@@ -29,7 +29,12 @@ public class UserInterface implements Runnable {
             }
 
             try {
-                System.out.println(cont.receiveFromController());
+                String[] input = cont.receiveFromController().split("/");
+                System.out.println("---" + input[3] + "---" );
+                System.out.println("Score: " + input[0] + "     Attempts: " + input[1] );
+                System.out.println("Word to guess:   " + input[2] + "\n");
+
+
             } catch (IOException e) {
                 e.printStackTrace();
             }

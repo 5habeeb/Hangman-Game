@@ -80,7 +80,7 @@ public class Game {
     private String createWord (int lenght){
         StringBuilder word = new StringBuilder();
         for (int i=0 ; i< lenght ; i++){
-            word.append("_");
+            word.append("-");
         }
         return String.valueOf(word);
     }
@@ -123,6 +123,13 @@ public class Game {
     }
 
     private void updateGameData(){
+
+        /*
+        //get separated clientWord if game in progress
+        if (!win && !lose)
+            clientWord = separatedClientWord();
+            */
+
         StringBuilder temp = new StringBuilder();
         temp.append(score);
         temp.append("/");
@@ -148,6 +155,16 @@ public class Game {
         clientWord = serverWord;
     }
 
+
+    private String separatedClientWord() {
+        char[] array = clientWord.toCharArray();
+        StringBuilder str = new StringBuilder();
+        for(int i=0 ; i<array.length; i++){
+            str.append(array[i]);
+            str.append(" ");
+        }
+        return String.valueOf(str);
+    }
 
 
 
