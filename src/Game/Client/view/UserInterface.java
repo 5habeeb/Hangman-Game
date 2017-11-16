@@ -7,46 +7,32 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class UserInterface implements Runnable {
-    private Controller contr;
+    private Controller cont;
 
 
     public void start(){
-        contr = new Controller();
+        cont = new Controller();
         new Thread(this).start();
     }
 
     @Override
     public void run() {
+        System.out.println("Type 'Start Game' to play...");
+        while (true) {
+            Scanner userEntry = new Scanner(System.in);
 
-        while(true){
-            System.out.println("send/receive");
-            Scanner userInput = new Scanner(System.in);
-            String str = userInput.nextLine();
-
-            switch (str){
-                case "send" :
-                    String s = userInput.nextLine();
-                    try {
-                        contr.sendToController(s);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-
-                case "receive" :
-                    try {
-                        System.out.println(contr.receiveFromController());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    ;
-                    break;
-
-                default:
-                    break;
+            String s = userEntry.nextLine();
+            try {
+                cont.sendToController(s);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 
+            try {
+                System.out.println(cont.receiveFromController());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-
     }
 }

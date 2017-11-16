@@ -7,7 +7,7 @@ public class Controller {
 
     // send data to model
     public void setInput (String receivedData){
-        game.setGamedata(receivedData);
+        game.receivedData(receivedData);
     }
 
     // get data from model
