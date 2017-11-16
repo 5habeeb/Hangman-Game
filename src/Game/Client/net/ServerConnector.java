@@ -39,7 +39,6 @@ public class ServerConnector {
 
     public String receiveFromServer () throws IOException {
         input = new Scanner(socket.getInputStream());
-        System.out.println("did it to network");
         return input.nextLine();
     }
 
