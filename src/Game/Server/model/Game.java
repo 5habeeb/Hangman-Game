@@ -41,7 +41,7 @@ public class Game {
                 endGame();
             }
             else {
-                //Thread.sleep(15000);
+                Thread.sleep(15000);
                 gameInProgress(receivedWord);
             }
         }
@@ -61,7 +61,7 @@ public class Game {
         attempts = serverWord.length();
         clientWord = createWord (serverWord.length());
         message = " GAME ON ";
-        wrongLetters = " ";
+        wrongLetters  = " ";
         updateGameData();
 
         win = false;

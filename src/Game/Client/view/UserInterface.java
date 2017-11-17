@@ -6,34 +6,53 @@ import Game.Client.controller.Controller;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class UserInterface implements Runnable {
+public class UserInterface {
     private Controller cont;
 
 
     public void start(){
         cont = new Controller();
-        new Thread(this).start();
+        runProgramm();
     }
 
-    @Override
-    public void run() {
+
+    public void runProgramm() {
         System.out.println("Type 'Start Game' to play...");
         while (true) {
             Scanner userEntry = new Scanner(System.in);
 
-            String s = userEntry.nextLine();
+            String packetTosend = userEntry.nextLine();
+            new Thread(new Sender(packetTosend)).start();
+
+        }
+    }
+
+    private void showOutput (String receivedPacket){
+        String[] dataToShow = receivedPacket.split("/");
+        System.out.println("---" + dataToShow[3] + "---" );
+        System.out.println("Score: " + dataToShow[0] + "     Attempts: " + dataToShow[1] + "    Wrong letters: " + dataToShow[4]);
+        System.out.println("Word to guess:   " + dataToShow[2] + "\n");
+
+    }
+
+    private class Sender implements Runnable{
+        private String packetoSend;
+
+        Sender (String packetToSend){
+            this.packetoSend = packetToSend;
+        }
+
+        @Override
+        public void run() {
             try {
-                cont.sendToController(s);
+                cont.sendToController(packetoSend);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
             try {
-                String[] input = cont.receiveFromController().split("/");
-                System.out.println("---" + input[3] + "---" );
-                System.out.println("Score: " + input[0] + "     Attempts: " + input[1] + "    Wrong letters: " + input[4]);
-                System.out.println("Word to guess:   " + input[2] + "\n");
-
+                String receivedPacket = cont.receiveFromController();
+                showOutput(receivedPacket);
 
             } catch (IOException e) {
                 e.printStackTrace();
