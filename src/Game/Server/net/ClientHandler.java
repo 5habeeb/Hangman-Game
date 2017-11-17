@@ -7,6 +7,8 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
+
+
 public class ClientHandler implements Runnable {
     private final Socket clientSocket;
     private Scanner input;
@@ -19,6 +21,8 @@ public class ClientHandler implements Runnable {
         this.clientSocket = clientSocket;
     }
 
+
+    // method called from the <code>startConnection</code>
     @Override
     public void run() {
 

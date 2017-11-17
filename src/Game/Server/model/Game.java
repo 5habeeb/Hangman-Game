@@ -9,14 +9,13 @@ public class Game {
     // Game data need to be sent to user
     private int score = 0;
     private int attempts;
-    private String clientWord;
+    private String clientWord;          // the word displayed for the user
     private String message;
-    private String wrongLetters = " ";
+    private String wrongLetters = " ";  // the wrong guessed letters
 
-    boolean guessedLetter = false;
-    boolean win = false;
-    boolean lose = false;
-
+    private boolean guessedLetter = false;
+    private boolean win = false;
+    private boolean lose = false;
     private boolean gameInProgress;
 
 
@@ -55,6 +54,7 @@ public class Game {
 
     }
 
+    // set the information for a new game
     private void startGame(){
         serverWord = Word.randomWord();
         System.out.println(serverWord);
@@ -74,14 +74,15 @@ public class Game {
         updateGameData();
     }
 
-    private String createWord (int lenght){
+    private String createWord (int length){
         StringBuilder word = new StringBuilder();
-        for (int i=0 ; i< lenght ; i++){
+        for (int i=0 ; i< length ; i++){
             word.append("_");
         }
         return String.valueOf(word);
     }
 
+    // Processing the received data from the client
     private void gameInProgress (String receivedWord){
         guessedLetter = false;
 
@@ -94,15 +95,20 @@ public class Game {
                      StringBuilder str = new StringBuilder(clientWord);
                      str.setCharAt(i,letter);
                      clientWord = String.valueOf(str);
-                     guessedLetter = true;
+                     guessedLetter = true; // flag
                  }
              }
 
+             // if the letter is wrong letter
+            // decrement the number of attempts
+            // and add it to the list of the wrong numbers
              if(!guessedLetter){
                  attempts--;
                  addWrongletter(letter);
              }
 
+             // check if the word is guessed after
+            // the last letter was received by the client
              if (serverWord.equalsIgnoreCase(clientWord))
                  win = true;
         }
@@ -117,10 +123,13 @@ public class Game {
         if(win)
             gameWin();
 
-
         updateGameData();
     }
 
+    // set the format of the sent data
+    // the data is sent as a string of
+    // other strings separated by '/'
+    // scrore/attemps/clientWord/message/wrongLetters
     private void updateGameData(){
 
         StringBuilder temp = new StringBuilder();

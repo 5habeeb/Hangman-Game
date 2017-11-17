@@ -21,6 +21,8 @@ public class GameServer {
         server.init();
     }
 
+    // waiting to client to establish a connection and
+    // pass the socket to the <code>startConnection</code>
     private void init() {
         try{
             ServerSocket socket = new ServerSocket(PORT_NO);
@@ -36,6 +38,8 @@ public class GameServer {
 
     }
 
+    // start a thread for each client
+    // to provide the capability of handling multiple client simultaneously
     private void startConnection ( Socket link) throws SocketException
     {
         ClientHandler handler = new ClientHandler(link);

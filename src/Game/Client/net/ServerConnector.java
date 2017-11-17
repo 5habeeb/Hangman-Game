@@ -6,7 +6,11 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
-
+/*
+** The part of the client that is responsible of
+** the connection, sending and receiving data to and from
+** the server
+ */
 public class ServerConnector {
     private Socket socket;
     private Scanner input;

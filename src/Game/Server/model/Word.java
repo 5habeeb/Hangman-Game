@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+
+/*
+** Creating a rand word by getting a random word from the resource file word.txt
+ */
+
+
 public class Word {
 
     private static ArrayList<String> lOfWords = new ArrayList<>();
