@@ -31,7 +31,7 @@ public class UserInterface implements Runnable {
             try {
                 String[] input = cont.receiveFromController().split("/");
                 System.out.println("---" + input[3] + "---" );
-                System.out.println("Score: " + input[0] + "     Attempts: " + input[1] );
+                System.out.println("Score: " + input[0] + "     Attempts: " + input[1] + "    Wrong letters: " + input[4]);
                 System.out.println("Word to guess:   " + input[2] + "\n");
 
 

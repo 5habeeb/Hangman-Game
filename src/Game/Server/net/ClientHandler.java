@@ -12,6 +12,7 @@ public class ClientHandler implements Runnable {
     private Scanner input;
     private PrintWriter output;
     private final Controller contr = new Controller();
+    private boolean conncet = true;
 
 
     public ClientHandler(Socket clientSocket) {
@@ -21,7 +22,7 @@ public class ClientHandler implements Runnable {
     @Override
     public void run() {
 
-        while(true){
+        while(conncet){
             try {
                 input = new Scanner(clientSocket.getInputStream());
                 output =  new PrintWriter(clientSocket.getOutputStream(), true);
@@ -32,11 +33,30 @@ public class ClientHandler implements Runnable {
 
             // receiving data from network
             String received = input.nextLine();
-            contr.setInput(received);
 
-            // sending data to network
-            output.println(contr.getOutput());
+            if(received.contains("disconnect"))
+                disconnect();
+            else{
+                try {
+                    contr.setInput(received);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                // sending data to network
+                output.println(contr.getOutput());
+            }
         }
 
+    }
+
+    private void disconnect(){
+        conncet = false;
+        System.out.println("Client is disconnected " + clientSocket.toString());
+        try{
+            clientSocket.close();
+        }
+        catch (IOException ioe){
+            System.out.println(ioe);
+        }
     }
 }

@@ -11,6 +11,7 @@ public class Game {
     private int attempts;
     private String clientWord;
     private String message;
+    private String wrongLetters = " ";
 
     boolean guessedLetter = false;
     boolean win = false;
@@ -18,14 +19,6 @@ public class Game {
 
     private boolean gameInProgress;
 
-    /*
-    private static final int START = 0;
-    private static final int IN_GAME = 1;
-    private static final int WIN = 2;
-    private static final int LOSE = 3;
-    private static final int END = 4;
-    private static final int
-    */
 
 
     // send the compound data together to the client
@@ -34,7 +27,7 @@ public class Game {
     }
 
     // data received form the client
-    public void receivedData (String receivedWord ){
+    public void receivedData (String receivedWord ) throws InterruptedException {
 
         if(receivedWord.equalsIgnoreCase("start game"))
             gameInProgress = true;
@@ -48,12 +41,15 @@ public class Game {
                 endGame();
             }
             else {
+                //Thread.sleep(15000);
                 gameInProgress(receivedWord);
             }
         }
 
         else{
-            message = "Please type start game to platy again";
+            message = " Please type 'start game' to play ";
+            clientWord = " ";
+            wrongLetters = " ";
             updateGameData();
         }
 
@@ -64,7 +60,8 @@ public class Game {
         System.out.println(serverWord);
         attempts = serverWord.length();
         clientWord = createWord (serverWord.length());
-        message = "Game On";
+        message = " GAME ON ";
+        wrongLetters = " ";
         updateGameData();
 
         win = false;
@@ -73,14 +70,14 @@ public class Game {
     }
 
     private void endGame(){
-        message = "GAME OVER";
+        message = " GAME OVER ";
         updateGameData();
     }
 
     private String createWord (int lenght){
         StringBuilder word = new StringBuilder();
         for (int i=0 ; i< lenght ; i++){
-            word.append("-");
+            word.append("_");
         }
         return String.valueOf(word);
     }
@@ -100,6 +97,12 @@ public class Game {
                      guessedLetter = true;
                  }
              }
+
+             if(!guessedLetter){
+                 attempts--;
+                 addWrongletter(letter);
+             }
+
              if (serverWord.equalsIgnoreCase(clientWord))
                  win = true;
         }
@@ -107,10 +110,6 @@ public class Game {
         // check if the word is guessed
         if (serverWord.equalsIgnoreCase(receivedWord))
             win = true;
-
-
-        if (!guessedLetter) {
-            attempts--;}
 
         if(attempts == 0)
             gameOver();
@@ -124,33 +123,29 @@ public class Game {
 
     private void updateGameData(){
 
-        /*
-        //get separated clientWord if game in progress
-        if (!win && !lose)
-            clientWord = separatedClientWord();
-            */
-
         StringBuilder temp = new StringBuilder();
         temp.append(score);
         temp.append("/");
         temp.append(attempts);
         temp.append("/");
-        temp.append(clientWord);
+        temp.append(separatedClientWord());
         temp.append("/");
         temp.append(message);
+        temp.append("/");
+        temp.append(wrongLetters);
         gameData = String.valueOf(temp);
     }
 
     private void gameOver (){
         score--;
-        message = "YOU LOSE! :( ";
+        message = " YOU LOSE! :( ";
         gameInProgress = false;
         clientWord = serverWord;
     }
 
     private void gameWin (){
         score++;
-        message = "YOU WIN! :) ";
+        message = " YOU WIN! :) ";
         gameInProgress = false;
         clientWord = serverWord;
     }
@@ -166,7 +161,12 @@ public class Game {
         return String.valueOf(str);
     }
 
-
+    private void addWrongletter(char letter){
+        StringBuilder temp = new StringBuilder(wrongLetters);
+        temp.append(letter);
+        temp.append(" ");
+        wrongLetters = String.valueOf(temp);
+    }
 
 
 

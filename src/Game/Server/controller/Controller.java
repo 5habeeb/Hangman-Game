@@ -6,7 +6,7 @@ public class Controller {
     private Game game = new Game();
 
     // send data to model
-    public void setInput (String receivedData){
+    public void setInput (String receivedData) throws InterruptedException {
         game.receivedData(receivedData);
     }
 

@@ -24,7 +24,7 @@ public class ServerConnector {
             System.exit(1);
         }
 
-        try { // heck this out one more time
+        try { // check this out one more time
             socket = new Socket(host, PORT_NO);
         }
         catch (IOException ioe){
@@ -35,11 +35,26 @@ public class ServerConnector {
     public void sendToServer ( String sentData) throws IOException {
         output = new PrintWriter(socket.getOutputStream(), true);
         output.println(sentData);
+
+        if(sentData.contains("disconnect")){
+            disconnect();
+        }
     }
 
     public String receiveFromServer () throws IOException {
         input = new Scanner(socket.getInputStream());
         return input.nextLine();
+    }
+
+    private void disconnect(){
+        System.out.println("Disconnecting from server");
+        try{
+            socket.close();
+            System.exit(0);
+        }
+        catch (IOException ioe){
+            System.out.println(ioe);
+        }
     }
 
 }
